@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Index
+Route::get('question', 'QuestionController@index');
+
+// Store Question
+Route::post('question', 'QuestionController@store');
+// Question Detail
+Route::get('question/{id}', 'QuestionController@detail');
+// Comment from Detail Question
+Route::post('/comment/store', 'CommentController@store')->name('comment.add');
