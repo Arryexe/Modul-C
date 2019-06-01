@@ -28,3 +28,5 @@ Route::post('question', 'QuestionController@store');
 Route::get('question/{id}', 'QuestionController@detail');
 // Comment from Detail Question
 Route::post('/comment/store', 'CommentController@store')->name('comment.add');
+// Reply to Comment from Detail Question
+Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');

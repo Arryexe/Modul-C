@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+<style>
+    .display-comment .display-comment {
+        margin-left: 40px;
+    }
+</style>
+
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -26,7 +32,7 @@
                     {{ csrf_field() }}
 
                         <div class="form-group">
-                            <input type="text" name="comment" class="form-control">
+                            <input type="text" name="comment" class="form-control" required>
                             <input type="hidden" name="question_id" value="{{ $question->id }}">
                         </div>
 
@@ -38,12 +44,9 @@
 
                     <hr>
 
-                    @foreach ($question->comments as $comment)
-                        <div class="display-comment">
-                            <b>{{ $comment->user->name }}</b> | {{ $comment->created_at }}
-                            <p>{{ $comment->body }}</p>
-                        </div>
-                    @endforeach
+                    <div class="display-comment">
+                        @include('partials._comment_replies', ['comments' => $question->comments, 'question_id' => $question->id])
+                    </div>
                 </div>
             </div>
         </div>
