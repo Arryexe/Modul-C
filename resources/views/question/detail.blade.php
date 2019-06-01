@@ -7,6 +7,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <b>Question
+                        <div class="text-right" style="margin-top: -25px;">
+                            <a href="{{ url('question') }}">Back to Question List</a>
+                        </div>
                     <p style="font-size: 24px;">
                         {{ $question->title }}<br></p></b>
                         from : {{ $question->user->name }} | {{ $question->askTime }}

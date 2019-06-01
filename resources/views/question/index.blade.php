@@ -20,11 +20,10 @@
 								<tr>
 									<td>
 										<h4>{{ $quest->title }}</h4>
-										<p style="font-size: 12px">From : </p>
 									</td>
 
 									<td align="right">
-										<a href="#">Show Detail</a>
+										<a href="{{ url('question/'.$quest->id) }}">Show Detail</a>
 									</td>
 								</tr>
 							@endforeach
