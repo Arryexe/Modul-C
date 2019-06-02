@@ -15,18 +15,30 @@
 
                 	<div class="panel-body">
 						<table class="table">
+							@if (count($question) > 0)
+								@foreach ($question as $quest)
+									<tr>
+										<td>
+											<h4>{{ $quest->title }}</h4>
+										</td>
 
-							@foreach ($question as $quest)
+										<td align="right">
+											<a href="{{ url('question/'.$quest->id) }}">Show Detail</a>
+										</td>
+									</tr>
+								@endforeach
 								<tr>
-									<td>
-										<h4>{{ $quest->title }}</h4>
-									</td>
-
-									<td align="right">
-										<a href="{{ url('question/'.$quest->id) }}">Show Detail</a>
+									<td colspan="2" align="center">
+										<div class="pagination">{!! str_replace('/?', '?', $question->render()) !!}</div>
 									</td>
 								</tr>
-							@endforeach
+							@else
+								<tr>
+									<td>
+										There is No Question Here ...
+									</td>
+								</tr>
+							@endif
 						</table>
                 	</div>
                	</div>

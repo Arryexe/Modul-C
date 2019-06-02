@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Comment;
+use DB;
 
 class QuestionController extends Controller
 {
 
 	public function index()
 	{
-		$question = Question::all();
+		$question = DB::table('questions')->paginate(5);
 
 		return view('question.index', compact('question'));
 	}
@@ -27,7 +28,7 @@ class QuestionController extends Controller
 
 		$question->title = $request->get('qtitle');
 		$question->content = $request->get('qcontent');
-		$question->askTime = date('Y-m-d');
+		$question->askTime = date('Y-m-d H:i:s');
 		$question->save();
 
 		return redirect('question/'. $question->id);

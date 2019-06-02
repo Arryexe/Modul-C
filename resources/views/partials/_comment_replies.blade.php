@@ -1,6 +1,6 @@
 @foreach ($comments as $comment)
 	<div class="display-comment">
-		<b>{{ $comment->user->name }}</b>
+		<b>{{ $comment->user->name }} | {{ $comment->created_at }}</b>
 		<p>{{ $comment->body }}</p>
 		<a href="" id="reply"></a>
 		<form action="{{ route('reply.add') }}" method="post">
