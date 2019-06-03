@@ -14,11 +14,23 @@
                 	</div>
 
                 	<div class="panel-body">
+                		<form action="" method="get">
 						<table class="table">
+            				<tr>
+            					<td>
+            						<input type="text" name="search" class="form-control" placeholder="Search Question Here ...">
+            					</td>
+
+            					<td colspan="3">
+            						<button type="submit" value="submit" class="btn btn-info">Search</button>
+            						<a href="{{ url('question?page='. $question->currentPage()) }}" class="btn btn-danger">Reset</a>
+            					</td>
+            				</tr>
+                		</form>
 							@if (count($question) > 0)
 								@foreach ($question as $quest)
 									<tr>
-										<td>
+										<td colspan="3">
 											<h4>{{ $quest->title }}</h4>
 										</td>
 
@@ -35,7 +47,7 @@
 							@else
 								<tr>
 									<td>
-										There is No Question Here ...
+										There is No Question Available ...
 									</td>
 								</tr>
 							@endif

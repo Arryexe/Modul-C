@@ -9,9 +9,11 @@ use App\Comment;
 class QuestionController extends Controller
 {
 
-	public function index()
+	public function index(Request $request)
 	{
-		$question = Question::paginate(5);
+		$key = '%'.$request->get('search').'%';
+
+		$question = Question::where('title', 'like', $key)->paginate(5);
 
 		return view('question.index', compact('question'));
 	}
