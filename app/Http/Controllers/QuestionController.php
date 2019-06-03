@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Comment;
-use DB;
 
 class QuestionController extends Controller
 {
 
 	public function index()
 	{
-		$question = DB::table('questions')->paginate(5);
+		$question = Question::paginate(5);
 
 		return view('question.index', compact('question'));
 	}

@@ -28,7 +28,7 @@
 									</tr>
 								@endforeach
 								<tr>
-									<td colspan="2" align="center">
+									<td colspan="4" align="center">
 										<div class="pagination">{!! str_replace('/?', '?', $question->render()) !!}</div>
 									</td>
 								</tr>
