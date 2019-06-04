@@ -12,10 +12,17 @@ class QuestionController extends Controller
 	public function index(Request $request)
 	{
 		$key = '%'.$request->get('search').'%';
+		$sort = $request->get('sort');
 
-		$question = Question::where('title', 'like', $key)->paginate(5);
+		if ($sort == 'asc') {
+			$question = Question::where('title', 'like', $key)->orderBy('created_at', 'ASC')->paginate(5);
+			return view('question.index', compact('question', 'sort'));
+		} 
+		else {
+			$question = Question::where('title', 'like', $key)->orderBy('created_at', 'DESC')->paginate(5);
 
-		return view('question.index', compact('question'));
+			return view('question.index', compact('question', 'sort'));
+		}
 	}
 
 	public function create()

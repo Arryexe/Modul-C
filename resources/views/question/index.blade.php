@@ -18,15 +18,39 @@
 						<table class="table">
             				<tr>
             					<td>
-            						<input type="text" name="search" class="form-control" placeholder="Search Question Here ...">
+            						<input type="text" name="search" class="form-control" placeholder="Search Question Here ..." style="width: 360px;">
+            					</td>
+            					<td colspan="3">
+            						<table style="float: right;">
+            							<tr>
+            								<td>
+            									<div style="margin-right: 28px;">
+            										<button type="submit" value="submit" class="btn btn-info">Search</button>
+	            									<a href="{{ url('question?page='. $question->currentPage()) }}" class="btn btn-danger">Reset</a>
+            									</div>
+            									</form>
+            								</td>
+
+            								<td>
+            									<div style="margin-right: 20px;">
+            										|
+            									</div>
+            								</td>
+
+            								<td>
+            									<form action="" method="get">
+					    							<select name="sort" style="border-radius: 5px;">
+					    								<option value="asc" {{ $sort == 'asc' ? 'selected' : '' }}>ASC</option>
+					    								<option value="desc" {{ $sort == 'desc' ? 'selected' : '' }}>DESC</option>
+					    							</select>
+					    							<button type="submit" value="submit" class="btn btn-info">Submit</button>
+					    						</form>
+            								</td>
+            							</tr>
+            						</table>
             					</td>
 
-            					<td colspan="3">
-            						<button type="submit" value="submit" class="btn btn-info">Search</button>
-            						<a href="{{ url('question?page='. $question->currentPage()) }}" class="btn btn-danger">Reset</a>
-            					</td>
             				</tr>
-                		</form>
 							@if (count($question) > 0)
 								@foreach ($question as $quest)
 									<tr>
