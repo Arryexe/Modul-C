@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Comment;
+use App\User;
 
 class QuestionController extends Controller
 {
@@ -31,12 +32,13 @@ class QuestionController extends Controller
 	}
 
 	public function store(Request $request)
-	{
+	{		
 		$question = new Question;
 
 		$question->title = $request->get('qtitle');
 		$question->content = $request->get('qcontent');
 		$question->askTime = date('Y-m-d H:i:s');
+		$question->user_id = $request->user()->id;
 		$question->save();
 
 		return redirect('question/'. $question->id);
@@ -48,5 +50,13 @@ class QuestionController extends Controller
 		$question->user()->associate($request->user());
 
 		return view('question.detail', compact('question'));
+	}
+
+	public function yquest(Request $request)
+	{
+		$user = $request->user()->id;
+		$question = Question::where('user_id', '=', $user)->paginate(5);
+
+		return view('question.yquest', compact('question'));
 	}
 }

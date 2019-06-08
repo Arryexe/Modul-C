@@ -9,7 +9,7 @@
 						<h4>List of Available Question</h4>
 
 						<div class="text-right" style="margin-top: -33px;">
-							<a href="{{ url('home') }}">Create a Question</a>
+							<a href="{{ url('home') }}">Create a Question</a> | <a href="{{ url('your-question') }}">Your Question</a>
 						</div>
                 	</div>
 

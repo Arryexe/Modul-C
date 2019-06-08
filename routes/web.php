@@ -26,6 +26,10 @@ Route::get('question', 'QuestionController@index');
 Route::post('question', 'QuestionController@store');
 // Question Detail
 Route::get('question/{id}', 'QuestionController@detail');
+// Your Question
+Route::get('your-question', 'QuestionController@yquest');
+
+
 // Comment from Detail Question
 Route::post('/comment/store', 'CommentController@store')->name('comment.add');
 // Reply to Comment from Detail Question
